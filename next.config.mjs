@@ -7,7 +7,12 @@ const nextConfig = {
       bodySizeLimit: "10mb",
     },
   },
-  ...(appBaseUrlPath ? { basePath: appBaseUrlPath } : {}),
+  ...(appBaseUrlPath
+    ? {
+        basePath: appBaseUrlPath,
+        trailingSlash: true,
+      }
+    : {}),
 };
 
 export default nextConfig;
