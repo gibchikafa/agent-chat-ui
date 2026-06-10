@@ -56,9 +56,9 @@ async function proxyRequest(
 
 async function handleProxy(
   req: Request,
-  context: { params: Promise<{ _path: string[] }> },
+  params: Promise<{ _path: string[] }>,
 ) {
-  const { _path } = await context.params;
+  const { _path } = await params;
   return proxyRequest(req, _path);
 }
 
