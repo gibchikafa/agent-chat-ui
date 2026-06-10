@@ -61,6 +61,8 @@ NEXT_PUBLIC_AUTH_SCHEME=
 
 > [!NOTE]
 > If you are connecting to a LangSmith Agent Builder deployment, set `NEXT_PUBLIC_AUTH_SCHEME=langsmith-api-key`.
+>
+> If you deploy behind Hopsworks or another reverse proxy that serves the app from a sub-path, set `APP_BASE_URL_PATH` to that prefix. Hopsworks already injects this value for app containers, and `next.config.mjs` uses it to serve the app under the same URL that the readiness probe targets.
 
 > [!TIP]
 > If you want to connect to a production LangGraph server, read the [Going to Production](#going-to-production) section.
