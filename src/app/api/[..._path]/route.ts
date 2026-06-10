@@ -54,50 +54,54 @@ async function proxyRequest(
   });
 }
 
-function handleProxy(req: Request, params: { _path?: string[] }) {
-  return proxyRequest(req, params._path ?? []);
+async function handleProxy(
+  req: Request,
+  context: { params: Promise<{ _path: string[] }> },
+) {
+  const { _path } = await context.params;
+  return proxyRequest(req, _path);
 }
 
 export const runtime = "edge";
 
 export async function GET(
   req: Request,
-  context: { params: { _path?: string[] } },
+  context: { params: Promise<{ _path: string[] }> },
 ) {
   return handleProxy(req, context.params);
 }
 
 export async function POST(
   req: Request,
-  context: { params: { _path?: string[] } },
+  context: { params: Promise<{ _path: string[] }> },
 ) {
   return handleProxy(req, context.params);
 }
 
 export async function PUT(
   req: Request,
-  context: { params: { _path?: string[] } },
+  context: { params: Promise<{ _path: string[] }> },
 ) {
   return handleProxy(req, context.params);
 }
 
 export async function PATCH(
   req: Request,
-  context: { params: { _path?: string[] } },
+  context: { params: Promise<{ _path: string[] }> },
 ) {
   return handleProxy(req, context.params);
 }
 
 export async function DELETE(
   req: Request,
-  context: { params: { _path?: string[] } },
+  context: { params: Promise<{ _path: string[] }> },
 ) {
   return handleProxy(req, context.params);
 }
 
 export async function OPTIONS(
   req: Request,
-  context: { params: { _path?: string[] } },
+  context: { params: Promise<{ _path: string[] }> },
 ) {
   return handleProxy(req, context.params);
 }
